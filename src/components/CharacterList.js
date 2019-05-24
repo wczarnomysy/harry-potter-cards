@@ -1,4 +1,5 @@
 import React from "react";
+import CharacterName from './CharacterName';
 
 class CharacterList extends React.Component {
     render () {
@@ -14,15 +15,8 @@ class CharacterList extends React.Component {
                 )
                 .map((item, index) => (
                     <li key={index}>
-                        <div className="container__card">
-                            <img
-                            className="card__photo"
-                            src={item.image}
-                            alt={"This is character:" + item.name}
-                            />
-                            <h2 className="card__name">{item.name}</h2>
-                            <h3 className="card__house">{item.house}</h3>
-                        </div>
+                        <CharacterName image={item.image}
+                        name={item.name} house={item.house} />
                     </li>
                     ))}
                 </ul>
