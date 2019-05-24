@@ -31,3 +31,12 @@
     transform: rotate(360deg);
   }
 }
+
+.card__photo {
+  width: 163px;
+  height: 227px;
+}
+
+.card__name {
+  font-size: 20px;
+}
