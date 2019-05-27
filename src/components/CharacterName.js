@@ -1,8 +1,10 @@
 import React from "react";
+import "./CharacterName.css";
+import PropTypes from "prop-types";
 
 class CharacterName extends React.Component {
   render() {
-      const{image,name,house} = this.props
+    const { image, name, house } = this.props;
     return (
       <div className="container__card">
         <img
@@ -16,5 +18,11 @@ class CharacterName extends React.Component {
     );
   }
 }
+
+CharacterName.propTypes = {
+  image: PropTypes.string,
+  name: PropTypes.string,
+  house: PropTypes.string
+};
 
 export default CharacterName;

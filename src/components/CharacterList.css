@@ -1,0 +1,13 @@
+.harry__list {
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.link__character {
+    text-decoration: none;
+    color: rgb(48, 17, 17);
+    font-size: 20px;
+}
