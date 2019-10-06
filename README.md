@@ -1,4 +1,4 @@
-Harry Potter Cards Apps
+Harry Potter Cards App
 
 ![Harry Image](https://cdn.pixabay.com/photo/2017/10/22/16/08/harry-potter-2878212_1280.jpg)
 
