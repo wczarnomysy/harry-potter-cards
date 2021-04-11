@@ -23,17 +23,42 @@
 
 .character__details {
     display: flex;
-    transform: scale(1.4);
-    margin-right: 100px;
+    justify-content: center;
+    align-self: center;
+    margin: 0 10px 0 10px;
+}
+
+@media (max-width: 500px) {
+
+    .character__details {
+        transform: scale(0.8);
+    }
+
+    .character__text {
+        transform: scale(0.8);
+        
+    }
+
+    .btn__return {
+        transform: scale(0.5);
+    }
+
+}
+
+@media screen and (min-width:1280px) {
+
+    .character__details {
+        transform: scale(1.4);
+    }
+
 }
 
 .character__photo {
-    align-self: center;
-    margin-right: 20px;
+    padding-right: 10px;
     height: 227px;
     width: 163px;
 }
 
 .character__text {
-    align-self: center;
+    margin-top: 0;
 }
