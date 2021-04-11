@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import "./App.css";
 import CharacterDetails from "./components/CharacterDetails";
 import Home from "./components/Home";
@@ -6,45 +6,30 @@ import fetchHarry from './services/fetchHarry';
 import { Route, Switch } from "react-router-dom";
 
 
-class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      harryPotter: [],
-      filterName: ""
-    };
-    this.handleFilterName = this.handleFilterName.bind(this);
-    this.resetFilters = this.resetFilters.bind(this);
-  }
+const App = () => {
+ 
+  const [harryPotter,  setHarryPotter] = useState([]);
+  const [filterName, setFilterName] = useState("");
 
-  componentDidMount() {
-    this.getPotter();
-  }
-
-  getPotter() {
+  useEffect(() => {
     fetchHarry()
       .then(data => {
         const newData = data.map((item, index) => {
           return { ...item, id: index };
         });
-        this.setState({
-          harryPotter: newData
-        });
+        setHarryPotter(newData);
       });
+      return () => {
+        setFilterName("");
+      }
+
+  }, []);
+
+  const  handleFilterName = (event)  => {
+    setFilterName(event.currentTarget.value);
   }
 
-  handleFilterName(event) {
-    const trigger = event.currentTarget.value;
-    this.setState({ filterName: trigger });
-  }
-
-  resetFilters() {
-    this.setState({ filterName: "" });
-  }
-
-  render() {
-    const { harryPotter, filterName } = this.state;
-    return (
+  return (
       <div className="app">
         <Switch>
           <Route
@@ -54,7 +39,7 @@ class App extends React.Component {
               <Home
                 harryPotter={harryPotter}
                 filterName={filterName}
-                handleFilterName={this.handleFilterName}
+                handleFilterName={handleFilterName}
               />
             )}
           />
@@ -64,14 +49,12 @@ class App extends React.Component {
               <CharacterDetails
                 match={props.match}
                 harryPotter={harryPotter}
-                resetFilters={this.resetFilters}
               />
             )}
           />
         </Switch>
       </div>
-    );
-  }
+  );
 }
 
 export default App;
