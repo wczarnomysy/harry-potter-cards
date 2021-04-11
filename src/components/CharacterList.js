@@ -4,15 +4,13 @@ import CharacterName from "./CharacterName";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 
-class CharacterList extends React.Component {
-  render() {
-    const { harryPotter, filterName } = this.props;
+  const CharacterList = (props) => {
     return (
       <div>
         <ul className="harry__list">
-          {harryPotter
+          {props.harryPotter
             .filter(item =>
-              item.name.toUpperCase().includes(filterName.toUpperCase())
+              item.name.toUpperCase().includes(props.filterName.toUpperCase())
             )
             .map((item, index) => (
               <li key={index}>
@@ -21,14 +19,13 @@ class CharacterList extends React.Component {
                   name={item.name}
                   house={item.house}
                 />
-                <Link className="link__character" to={`/character/${item.id}`}>{item.name}</Link>
+                <Link className="link__character" to={`/character/${item.id}`}>{item.name} Details</Link>
               </li>
             ))}
         </ul>
       </div>
     );
   }
-}
 
 CharacterList.propTypes = {
   harryPotter: PropTypes.array,
